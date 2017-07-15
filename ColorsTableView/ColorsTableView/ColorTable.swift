@@ -11,7 +11,14 @@ import UIKit
 
 class ColorTable: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let colors = ["red", "orange", "yellow", "green", "blue", "purple", "brown"]
+    let colors: [(color: UIColor, text: String)] = [
+        (UIColor.red,"red"),
+        (UIColor.orange,"orange"),
+        (UIColor.yellow,"yellow"),
+        (UIColor.green,"green"),
+        (UIColor.blue,"blue"),
+        (UIColor.purple,"purple"),
+        (UIColor.brown,"brown")]
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return(colors.count)
@@ -19,16 +26,9 @@ class ColorTable: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
-        cell.textLabel?.text = colors[indexPath.row]
+        cell.textLabel?.text = colors[indexPath.row].text
+        cell.backgroundColor = colors[indexPath.row].color
     
         return(cell)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 }
